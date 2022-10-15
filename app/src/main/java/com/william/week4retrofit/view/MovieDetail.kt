@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.william.week4retrofit.adapter.CompanyAdapter
 import com.william.week4retrofit.adapter.GenreAdapter
+import com.william.week4retrofit.adapter.SpokenLanguangeAdapter
 import com.william.week4retrofit.databinding.ActivityMovieDetailBinding
 import com.william.week4retrofit.helper.Const
 import com.william.week4retrofit.viewmodel.MoviesViewModel
@@ -22,7 +23,7 @@ class MovieDetail : AppCompatActivity() {
     private lateinit var viewModel: MoviesViewModel
     private lateinit var genreadapter : GenreAdapter
     private lateinit var prodcompadapter : CompanyAdapter
-
+    private lateinit var sladapter: SpokenLanguangeAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
@@ -58,6 +59,10 @@ class MovieDetail : AppCompatActivity() {
             binding.rvCompanyLogo.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             prodcompadapter = CompanyAdapter(response.production_companies)
             binding.rvCompanyLogo.adapter = prodcompadapter
+
+            binding.rvSpokenlanguange.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+            sladapter = SpokenLanguangeAdapter(response.spoken_languages)
+            binding.rvSpokenlanguange.adapter=sladapter
 
             binding.progressBar.visibility = View.INVISIBLE
 
